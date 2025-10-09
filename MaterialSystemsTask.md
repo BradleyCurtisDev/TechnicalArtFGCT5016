@@ -46,6 +46,15 @@
 *Figure X: Screenshot of in engine water material without bringt scene lighting*
 
 
+## Material Parameter Collection (MPC) System
+
+## Dynamic Material Instance with Runtime Control
+
+## Parallax Occlusion Mapping (POM) Material
+
+## Optional A: Post Process Material
+
+
 
 
 
