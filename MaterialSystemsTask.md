@@ -29,6 +29,10 @@
 
 ### What vertex density is required for a smooth wave?
 
+![Lit Wireframe of object with wave material](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/LitWireframe.png?token=GHSAT0AAAAAADMZXQJVPHNPH52O7FVYTNZA2HHWREQ)
+
+*Figure X: Lit Wireframe of object with wave material which shows wave displacement.*
+
 ### How does my water material respond to different lighting conditions?
 
 - Due to the foam of the water being emissive, it still shows no matter what light is being applied to the water. Additionally when the scene is very dark it gets more difficult to see the normal map movement as opposed to when the scene is lit.
