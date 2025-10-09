@@ -15,6 +15,10 @@
 
 *Figure X: Gif of waves*
 
+![Image of Material Editor](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/WaterMaterialInEditor.png?token=GHSAT0AAAAAADMZXQJUBD6OEP2UKPSX25LA2HHWEVQ)
+
+*Figure X: Screenshot of material editor*
+
 ### How can you control wave direction and intensity?
 
 ![Image of WPO Nodes](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/WorldPositionOffsetNodes.png?token=GHSAT0AAAAAADMZXQJU5VI7IIHQKXXAB4MW2HHVT2A)
