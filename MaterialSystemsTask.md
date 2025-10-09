@@ -12,11 +12,25 @@
 
 ### How can you control wave direction and intensity?
 
+![Image of WPO Nodes](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/WorldPositionOffsetNodes.png?token=GHSAT0AAAAAADMZXQJU5VI7IIHQKXXAB4MW2HHVT2A)
+
+*Figure X: Screenshot of nodes which control visual waves*
+
+- In the above screenshot I have a paramater named "Wave Size" which if increases the amplitude of each wave. TThe speed pin of the "Panner" node controls wave speed and direction. If the X and Y values of the Vector2d which links into speed were to be negative the direction of the waves would be flipped. If you were to change only one to negative you could also make the waves move in any of the four cardinal directions.
+
 ### What vertex density is required for a smooth wave?
 
-### How does your water material respond to different lighting conditions?
+### How does my water material respond to different lighting conditions?
 
+- Due to the foam of the water being emissive, it still shows no matter what light is being applied to the water. Additionally when the scene is very dark it gets more difficult to see the normal map movement as opposed to when the scene is lit.
 
+![Image is nodes for foam](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/FoamNodes.png?token=GHSAT0AAAAAADMZXQJVYYQXOIF46YJEJWW22HHVO2A)
+
+*Figure X: Nodes for creating the foam visuals around objects which tough the water*
+
+![Image of the water texture in the dark](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/FoamInDark.png?token=GHSAT0AAAAAADMZXQJV3DUEZM4TMR3R32I62HHVLSQ)
+
+*Figure X: Screenshot of in engine water material without bringt scene lighting*
 
 
 
