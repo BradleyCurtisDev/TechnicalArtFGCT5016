@@ -8,7 +8,12 @@
 
 ![Gif of moving water](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/2025-10-09%2013-05-29.gif?token=GHSAT0AAAAAADMZXQJVEH2CLZA4JVPKXSSI2HHU53A)
 
+
 *Figure 1: Gif of final water texture.*
+
+![Gif of moving water Topdown](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/WavesTopdownGif.gif?token=GHSAT0AAAAAADMZXQJVSXN4646NMOP547RS2HHV6ZA)
+
+*Figure X: Gif of waves*
 
 ### How can you control wave direction and intensity?
 
