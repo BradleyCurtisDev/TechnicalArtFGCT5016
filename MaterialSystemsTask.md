@@ -6,16 +6,16 @@
 
 ### QUESTION: How does WPO affect performance compared to animated meshes?
 
-![Gif of moving water](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/2025-10-09%2013-05-29.gif?token=GHSAT0AAAAAADMZXQJVEH2CLZA4JVPKXSSI2HHU53A)
+![Gif of moving water](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/2025-10-09%2013-05-29.gif)
 
 
 *Figure 1: Gif of final water texture.*
 
-![Gif of moving water Topdown](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/WavesTopdownGif.gif?token=GHSAT0AAAAAADMZXQJVSXN4646NMOP547RS2HHV6ZA)
+![Gif of moving water Topdown](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/WavesTopdownGif.gif)
 
 *Figure X: Gif of waves*
 
-![Image of Material Editor](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/WaterMaterialInEditor.png?token=GHSAT0AAAAAADMZXQJUBD6OEP2UKPSX25LA2HHWEVQ)
+![Image of Material Editor](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/WaterMaterialInEditor.png)
 
 *Figure X: Screenshot of material editor*
 
