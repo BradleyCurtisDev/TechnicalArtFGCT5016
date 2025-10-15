@@ -2,7 +2,6 @@
 
 ## 1. Stylized Water Material with World Position Offset
 
-- Using World Position Offset I created a simple visual waves.  
 
 ### QUESTION: How does WPO affect performance compared to animated meshes?
 
@@ -21,7 +20,7 @@
 
 ### How can you control wave direction and intensity?
 
-![Image of WPO Nodes](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/WorldPositionOffsetNodes.png?token=GHSAT0AAAAAADMZXQJU5VI7IIHQKXXAB4MW2HHVT2A)
+![Image of WPO Nodes](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/WorldPositionOffsetNodes.png)
 
 *Figure X: Screenshot of nodes which control visual waves*
 
@@ -29,7 +28,7 @@
 
 ### What vertex density is required for a smooth wave?
 
-![Lit Wireframe of object with wave material](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/LitWireframe.png?token=GHSAT0AAAAAADMZXQJVPHNPH52O7FVYTNZA2HHWREQ)
+![Lit Wireframe of object with wave material](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LitWireframe.png)
 
 *Figure X: Lit Wireframe of object with wave material which shows wave displacement.*
 
@@ -37,24 +36,44 @@
 
 - Due to the foam of the water being emissive, it still shows no matter what light is being applied to the water. Additionally when the scene is very dark it gets more difficult to see the normal map movement as opposed to when the scene is lit.
 
-![Image is nodes for foam](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/FoamNodes.png?token=GHSAT0AAAAAADMZXQJVYYQXOIF46YJEJWW22HHVO2A)
+![Image is nodes for foam](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/FoamNodes.png)
 
 *Figure X: Nodes for creating the foam visuals around objects which tough the water*
 
-![Image of the water texture in the dark](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtFGCT5016/refs/heads/main/ImagesAndGifs/FoamInDark.png?token=GHSAT0AAAAAADMZXQJV3DUEZM4TMR3R32I62HHVLSQ)
+![Image of the water texture in the dark](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/FoamInDark.png)
 
 *Figure X: Screenshot of in engine water material without bringt scene lighting*
 
 
 ## Material Parameter Collection (MPC) System
 
+- Why use MPC instead of individual material parameters?
+- How does your system maintain visual consistency across materials?
+- What performance benefits does MPC provide?
+
 ## Dynamic Material Instance with Runtime Control
+
+- When should you use DMI versus Material Instance Constant?
+- How do you optimize DMI creation and updates?
+- What gameplay scenarios benefit from runtime material modification?
+
+
 
 ## Parallax Occlusion Mapping (POM) Material
 
+- How does step count affect visual quality and performance?
+- What types of surfaces benefit most from POM?
+- How does POM compare to simple bump offset?
+- What are the limitations at silhouette edges?
+
+
+
 ## Optional A: Post Process Material
 
-
+- Create a post-process material with a visible screen effect
+- Choose blendable location (before/after tonemapping) appropriately
+- Implement effect using Scene Texture nodes
+- Examples: outline shader, screen distortion, custom color grading, stylized effect
 
 
 
