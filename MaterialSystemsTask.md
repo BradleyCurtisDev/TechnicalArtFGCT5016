@@ -76,30 +76,11 @@
 - Examples: outline shader, screen distortion, custom color grading, stylized effect
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Documentation
 
 - Make Sure to Cite these correctly later
+
+
+https://youtu.be/-I-yuORUJVQ?si=8_RFpvSCU0QEsNNm
 
 https://dev.epicgames.com/community/learning/tutorials/pBal/epic-for-indies-tutorial-creating-a-water-shader-in-unreal-engine-5-6-using-blueprints-material-editor
