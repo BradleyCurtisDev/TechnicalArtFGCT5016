@@ -3,7 +3,9 @@
 ## 1. Stylized Water Material with World Position Offset
 
 
-### QUESTION: How does WPO affect performance compared to animated meshes?
+### How does WPO affect performance compared to animated meshes?
+
+- World Position Offset provides a performance advantage over using animated meshes for water because the WPO calculations only occur in the GPU for each instance of the mesh rather than updating every frame for animated meshes. Animated meshes cause more strain on the CPU because the water meshes vertex positions update ever frame which reduces frame rate. Animated meshes can be good for more detailed assets however with large or repetitive objects, using WPO materials reduces CPU overhead as they can be batched into a single draw call
 
 ![Gif of moving water](https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/2025-10-09%2013-05-29.gif)
 
