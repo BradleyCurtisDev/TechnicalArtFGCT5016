@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AutoMaterialsTaskWriteup</title>
+	<style>
+		/* Basic styles for readability */
+		body {
+			font-family: sans-serif;
+			max-width: 800px;
+			margin: 2em auto;
+			padding: 0 1em;
+			line-height: 1.6;
+		}
+		img { max-width: 100%; height: auto; }
+		pre { background-color: #f4f4f4; padding: 1em; overflow-x: auto; }
+		code { font-family: monospace; }
+	</style>
+</head>
+<body>
+	<h1>Auto Landscape Materials Task</h1>
+<p><a href="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/LadscapeOverviewImage.png"><img src="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/LadscapeOverviewImage.png" alt="FinalLandscapeImage"></a></p>
+<h2>1. Height-Based Blending System</h2>
+<h3>How does the height blending system function?</h3>
+<p>The main part of my landscape material uses a height blending system. This automatically changes between different layers like Dirt, Grass, Rock, and Snow based on the height of the landscape. I used the <strong>LandscapeLayerBlend</strong> node to handle these layers. This makes sure that each biome shows up at the right height.</p>
+<p>To make the transitions smooth, I made some <strong>Scalar Parameters</strong> that control the height settings for each layer. For example, <code>SnowHeight</code> sets where the snow starts. <code>RockHeight</code> and <code>GrassHeight</code> control the lower parts. This setup lets me change the look of the landscape in real time without needing to recompile the shader.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter Name</th>
+<th style="text-align:left">Default Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>SnowHeight</strong></td>
+<td style="text-align:left"><em>Adjustable</em></td>
+<td style="text-align:left">Controls the world height at which the snow layer begins to blend in.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>RockHeight</strong></td>
+<td style="text-align:left">1.0</td>
+<td style="text-align:left">Sets the elevation threshold for the rock layer.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>GrassHeight</strong></td>
+<td style="text-align:left">1.0</td>
+<td style="text-align:left">Defines the height range for the grass layer.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>DirtHeight</strong></td>
+<td style="text-align:left">1.0</td>
+<td style="text-align:left">Controls the base elevation for the dirt layer.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>FalloffRange</strong></td>
+<td style="text-align:left"><em>Adjustable</em></td>
+<td style="text-align:left">Determines the softness of the transition between height layers.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/MaterialBlendNodes.png"><img src="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/MaterialBlendNodes.png" alt="HeightBlendingNodes"></a></p>
+<h3>How do you prevent harsh transitions?</h3>
+<p>To stop harsh lines appearing between materials, I used <strong>Material Functions</strong> for each layer. These are <code>MF_Snow</code>, <code>MF_Rock</code>, <code>MF_Grass</code>, and <code>MF_Dirt</code>. I blended them using alpha masks based on height. I added a <code>FalloffRange</code> parameter to control how soft the blend is. This makes sure it fades naturally instead of having a hard cut. This is important for keeping the biomes looking distinct while making the landscape look natural.</p>
+<p><a href="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/MaterialBlendExample1.png"><img src="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/MaterialBlendExample1.png" alt="Image of Landscape Height Blend"></a></p>
+<hr>
+<h2>2. Slope-Based Blending System</h2>
+<h3>How is slope blending implemented?</h3>
+<p>For the slope blending, I used the <strong>WorldAlignedBlend</strong> function. This node works out the angle of the surface compared to the world. It lets me mask out areas based on how steep they are. This is needed to automatically put rock textures on cliffs and steep hills where grass or snow would not naturally be.</p>
+<p>I made <code>BlendSharpness</code> and <code>BlendBias</code> parameters visible so I could adjust where the rock texture appears. A higher sharpness value makes a clearer edge for cliffs. The bias changes the angle threshold.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter Name</th>
+<th style="text-align:left">Default Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>BlendSharpness</strong></td>
+<td style="text-align:left">15.0</td>
+<td style="text-align:left">Controls how sharp the transition is between flat and steep surfaces.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>BlendBias</strong></td>
+<td style="text-align:left">-5.0</td>
+<td style="text-align:left">Offsets the slope angle threshold, determining how steep a surface must be to change texture.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>RockBlendSharpness</strong></td>
+<td style="text-align:left">15.0</td>
+<td style="text-align:left">Specific sharpness control for the rock layer transitions.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>DirtBlendSharpness</strong></td>
+<td style="text-align:left">15.0</td>
+<td style="text-align:left">Specific sharpness control for the dirt layer transitions.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/SlopeBlend.png"><img src="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/SlopeBlend.png" alt="Image of Slope Blending Nodes"></a></p>
+<h3>How does slope blending enhance realism?</h3>
+<p>Slope blending makes the landscape look much more realistic. It ensures that vertical surfaces look structurally correct. By automatically putting a rock material on steep angles, the landscape looks like it has natural erosion. I also made sure that the normal maps were blended correctly. This means the lighting interacts realistically with the cliff faces and adds depth to the shape.</p>
+<p><a href="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/SlopeBlendExample.png"><img src="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/SlopeBlendExample.png" alt="Image of Cliff Face"></a></p>
+<hr>
+<h2>3. Foliage Type Integration</h2>
+<h3>How is the foliage distributed?</h3>
+<p>I set up a <strong>Procedural Foliage Spawner</strong> called <code>PFS_Grassland</code> to put plants on the landscape automatically. This system works together with the landscape material blend layers. This makes sure that trees and flowers only spawn in places that make sense like grass layers. They are kept away from steep cliffs or snowy peaks.</p>
+<p>The system includes a mix of foliage assets to create a varied ecosystem.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Foliage Asset</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>SFM_Grass</strong></td>
+<td style="text-align:left">Static Mesh</td>
+<td style="text-align:left">Basic grass clumps for general coverage.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>SFM_Flowers</strong></td>
+<td style="text-align:left">Static Mesh</td>
+<td style="text-align:left">Flowering plants to add color variance to the grasslands.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>SFM_Tree1</strong></td>
+<td style="text-align:left">Static Mesh</td>
+<td style="text-align:left">Primary tree type for forested areas.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>SFM_Tree2</strong></td>
+<td style="text-align:left">Static Mesh</td>
+<td style="text-align:left">Secondary tree variation for visual interest.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>SFM_Grass1</strong></td>
+<td style="text-align:left">Static Mesh</td>
+<td style="text-align:left">Additional grass variation for density.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/PFS_Grassland.png"><img src="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/PFS_Grassland.png" alt="Image of Foliage Spawner Settings"></a></p>
+<h3>How do you balance visual richness with performance?</h3>
+<p>To keep performance good while making it look dense, I used <strong>Instanced Static Meshes</strong> for all foliage types. This lets the engine render thousands of instances with very few draw calls. I also set up density rules in the foliage types to stop too many spawning in areas where the camera is less likely to look.</p>
+<p><a href="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/FoliageAreaViewport.png"><img src="https://raw.githubusercontent.com/BradleyCurtisDev/TechnicalArtImages/refs/heads/main/LandscapeImages/FoliageAreaViewport.png" alt="Image of Final Landscape"></a></p>
+<hr>
+<h2>Documentation</h2>
+<ul>
+<li>
+<p>Landscape Materials in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/landscape-materials-in-unreal-engine">https://dev.epicgames.com/documentation/en-us/unreal-engine/landscape-materials-in-unreal-engine</a> (Accessed  16/10/2025).</p>
+</li>
+<li>
+<p>Material Functions in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/material-functions-in-unreal-engine">https://dev.epicgames.com/documentation/en-us/unreal-engine/material-functions-in-unreal-engine</a> (Accessed  16/10/2025).</p>
+</li>
+<li>
+<p>Procedural Foliage Tool in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/procedural-foliage-tool-in-unreal-engine">https://dev.epicgames.com/documentation/en-us/unreal-engine/procedural-foliage-tool-in-unreal-engine</a> (Accessed  20/10/2025).</p>
+</li>
+<li>
+<p>Save hours! Procedural Foliage in Unreal Engine 5 - Photoreal Landscape Tutorial (2023) Directed by Aziel Arts. At: <a href="https://www.youtube.com/watch?v=JpbWi95Bz20">https://www.youtube.com/watch?v=JpbWi95Bz20</a> (Accessed  20/10/2025).</p>
+</li>
+<li>
+<p>Slope Blending for Static Meshes - Development / Rendering (2016) At: <a href="https://forums.unrealengine.com/t/slope-blending-for-static-meshes/61903">https://forums.unrealengine.com/t/slope-blending-for-static-meshes/61903</a> (Accessed  17/10/2025).</p>
+</li>
+<li>
+<p>UE4 Tutorial: Material Functions (2019) Directed by underscore. At: <a href="https://www.youtube.com/watch?v=PRJnfMH7hxc">https://www.youtube.com/watch?v=PRJnfMH7hxc</a> (Accessed  16/10/2025).</p>
+</li>
+<li>
+<p>UE5 Landscape Auto Material - Slope Mask 101 (2022) Directed by Wonderscape Creations. At: <a href="https://www.youtube.com/watch?v=t0bJmNaoF08">https://www.youtube.com/watch?v=t0bJmNaoF08</a> (Accessed  17/10/2025).</p>
+</li>
+<li>
+<p>What are the difference between landscape layer blend types? - Development / Rendering (2016) At: <a href="https://forums.unrealengine.com/t/what-are-the-difference-between-landscape-layer-blend-types/380276">https://forums.unrealengine.com/t/what-are-the-difference-between-landscape-layer-blend-types/380276</a> (Accessed  16/10/2025).</p>
+</li>
+</ul>
+
+</body>
+</html>
