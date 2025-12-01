@@ -175,3 +175,38 @@ World Displacement Material (water) (2021) Directed by Gordon Vart. At: https://
 
 WPO animated instanced static mesh smearing - Development / Rendering (2023) At: https://forums.unrealengine.com/t/wpo-animated-instanced-static-mesh-smearing/776920
  (Accessed 10/10/2025).
+
+ ## Declared Assets
+
+- "Stylized_Tree_Pack" from Fab,
+https://www.fab.com/listings/b39d5f78-9494-4a20-b029-24babc8405c5
+
+- "Quarry_Rocks" from Fab,
+https://www.fab.com/listings/6524e193-c690-4191-8b9a-33b62dd846f8
+
+- "Wild_Grass_vlkhcbxia" from Fab,
+https://www.fab.com/listings/50d9a417-73ed-4132-9421-6be3d4f7432e
+
+- "Spring_Lungwort_flowering_plants" from Fab,
+https://www.fab.com/listings/bc57eee9-a709-4553-a1ae-a488afb2a8a4
+
+- `Week4/Animations` from Mixamo,
+https://www.mixamo.com/
+
+- "Rocky Sand" from Fab,
+https://www.fab.com/listings/a913d25a-5488-4293-9049-8c942a4f8332
+
+- "Fresh Windswept Snow" from Fab,
+https://www.fab.com/listings/6ac5c478-8f2c-47cc-88e1-ac36aac010c8
+
+- "Uncut Grass" from Fab,
+https://www.fab.com/listings/1b93f569-aa1d-4f06-8452-03216dfbc1a1
+
+- "Rock Cliff" from Fab,
+https://www.fab.com/listings/22762313-071f-4017-a721-b29c5a2f1a87
+
+- Blood Splatter Textures, 
+https://drive.google.com/file/d/1NqWHqKRGV6WOAyvhrHaXgIxYYKH2bigd/view
+
+- SubUV Flipbook Fire,
+https://bit.ly/2uWwpwZ
