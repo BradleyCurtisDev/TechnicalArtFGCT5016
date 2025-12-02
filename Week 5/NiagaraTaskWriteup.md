@@ -5,112 +5,149 @@
 
 ## 1. Fire Effect
 ### Description
-[Describe the fire effect here. Is it stylized or realistic? How does it move?]
+A stylized fire effect that uses mesh particles to create a volumetric look. The fire moves upward with a natural, turbulent motion, simulating heat rising and flickering flames.
 
 [Place holder for Fire Effect GIF]
 *Figure 2: The Fire effect in action.*
 
 ### Technical Details
-I used a [Sprite/Mesh/Ribbon] renderer for this effect. The motion is driven by...
+I used a **Mesh Renderer** for this effect to give the flames volume and a stylized appearance. The motion is driven by **Add Velocity** (configured as a Cone for upward spread) and **Curl Noise Force** to add turbulence and natural variation to the movement.
+
+[Placeholder for Mesh Renderer Settings Image]
+*Figure 3: Mesh Renderer settings showing the assigned mesh.*
+
+[Placeholder for Motion Modules Image]
+*Figure 4: Stack view showing Add Velocity and Curl Noise Force modules.*
 
 | Parameter | Description |
 | :--- | :--- |
-| **User.Color** | Controls the tint of the fire. |
-| **User.Intensity** | Adjusts the brightness/emissive power. |
-| **[Other Param]** | [Description] |
+| **User.ParticleScale** | Controls the overall size of the fire particles. |
+| **User.ParticleOrientation** | Controls the initial rotation/orientation of the particles. |
 
 ### Curves
-I utilized curves to control [Size/Alpha] over the particle's life (Normalized Age). This ensures the fire fades out naturally at the top.
+I utilized curves to control **Scale Mesh Size** and **Scale Color** over the particle's life (Normalized Age). This ensures the fire grows/shrinks appropriately and fades out naturally at the top, shifting colors as it cools.
+
+[Placeholder for Curve Editor Image]
+*Figure 5: Curve Editor showing Scale and Color curves over Normalized Age.*
 
 ## 2. Fireball Projectile
 ### Description
-[Describe the fireball projectile. How does the core look? What about the trail?]
+The Fireball is a projectile actor (`BP_Projectile`) spawned by the player character (`BP_ThirdPersonCharacter`) when the **E** key is pressed. It utilizes the `NS_Fire_System` for its visual representation, which consists of a core fire effect and trailing embers.
 
-[Place holder for Fireball GIF]
+![Fireball Projectile Placeholder](PLACEHOLDER_IMAGE_OF_FIREBALL_PROJECTILE)
 *Figure 3: The Fireball projectile flying through the air.*
 
 ### Technical Details
-The projectile consists of a core and a trail. The trail uses a [Ribbon/Sprite] renderer...
+*   **Blueprint:** `BP_Projectile` handles the projectile logic, including movement and collision.
+*   **Niagara System:** `NS_Fire_System` is attached to the projectile.
+*   **Emitters:**
+    *   `NE_Fire`: Creates the main fire core using a Sprite Renderer and upward velocity.
+    *   `NE_Embers`: Generates trailing sparks and embers.
+*   **On Hit:** When the projectile hits an object, it spawns `NE_Test_System` to create an impact effect.
 
-| Parameter | Description |
-| :--- | :--- |
-| **User.CoreColor** | Sets the color of the projectile core. |
-| **User.TrailWidth** | Controls the width of the trail. |
-| **User.Speed** | Adjusts the velocity of the projectile. |
+**Parameters:**
+| Parameter Name | Type | Description |
+| :--- | :--- | :--- |
+| `User.ParticleScale` | Float | Scales the size of the fire particles. |
+| `User.ParticleOrientation` | Vector | Controls the orientation of the particles, set by the projectile's rotation. |
+
 
 ## 3. Lightning Strike
-### Description
-[Describe the lightning strike. How does it arc? Does it flash?]
+### Visuals
+The lightning strike effect creates a dynamic electrical arc between two points. It uses a ribbon renderer to simulate the jagged path of a lightning bolt, likely with a bright, emissive color that flashes briefly.
 
-[Place holder for Lightning GIF]
+![Lightning Strike Placeholder](PlaceHolder_LightningStrike.gif)
 *Figure 4: The Lightning Strike effect.*
 
 ### Technical Details
-This effect uses a [Beam/Ribbon] renderer to create the arc between two points.
+**Blueprint:** `BP_LightningStrike`
+**Niagara System:** `NS_Lightning`
+
+*   **Renderer:** `Ribbon Renderer` to create the continuous arc.
+*   **Logic:** The Blueprint calculates the start and end positions and passes them to the Niagara System via User Parameters.
+*   **Modules:** Uses `FloatFromCurve` for various properties, likely controlling the jitter or width over the particle's lifetime.
 
 | Parameter | Description |
 | :--- | :--- |
-| **User.Start** | The starting position of the lightning. |
-| **User.End** | The target position of the lightning. |
-| **User.Color** | The color of the bolt. |
-| **User.Width** | The thickness of the bolt. |
+| **User.StartPosition** | The starting location of the lightning bolt (Set in BP). |
+| **User.EndPosition** | The target location of the lightning bolt (Set in BP). |
+| **User.RibbonWidth** | Controls the thickness of the ribbon. |
 
 ## 4. Slash Attack VFX
-### Description
-[Describe the slash effect. Does it follow the weapon? Is it stylized?]
+### Visuals
+The Slash Attack VFX consists of a lightning trail effect that follows the character's attacks, adding impact and visual flair to combat moves. It uses a ribbon renderer to create a continuous beam that jitters to simulate electricity.
 
-[Place holder for Slash Attack GIF]
-*Figure 5: The Slash Attack VFX synced with animation.*
+![Slash Attack VFX Placeholder](PlaceHolder_SlashAttack.gif)
+*Figure 5: Slash Attack VFX in action.*
 
 ### Technical Details
-The slash is attached to the weapon socket and uses...
+**Niagara System:** `NS_Lightning`
 
-| Parameter | Description |
-| :--- | :--- |
-| **User.Color** | The color of the slash trail. |
-| **User.Duration** | How long the trail persists. |
-| **[Other Param]** | [Description] |
+*   **Emitter:** `Lightning_0`
+*   **Renderer:** Ribbon Renderer (used to create the trail/beam effect).
+*   **Key Modules:**
+    *   **Beam Emitter Setup:** Configures the particle system to behave as a beam.
+    *   **Spawn Beam:** Handles the spawning logic for the beam particles.
+    *   **Beam Width:** Controls the width of the lightning ribbon, often modulated by a curve.
+    *   **Jitter Position:** Adds random displacement to particle positions to create the jagged, electric look of lightning.
+    *   **FloatFromCurve:** Used to scale properties like beam width or color over time.
+
+### Usage in Montages
+The VFX are triggered via `AnimNotifyState_TimedNiagaraEffect` in animation montages, attaching the system to specific sockets on the character mesh.
+
+1.  **Punch Combo (`H2H_PunchCombo01_Montage`)**
+    *   **System:** `NS_Lightning`
+    *   **Socket:** `HandGrip_R` (Right Hand)
+    *   **Trigger:** `AnimNotifyState_TimedNiagaraEffect` triggers the lightning trail during the punch animation.
+
+2.  **Kick Attack (`H2H_Kick01_Montage`)**
+    *   **System:** `NS_Fire_System` (Reused for kick impact/trail)
+    *   **Socket:** `foot_r_Socket` (Right Foot)
+    *   **Trigger:** `AnimNotifyState_TimedNiagaraEffect` triggers the fire effect on the foot during the kick.
+
+### User Parameters
+*   **User.EndPosition:** Likely used to define the target point for the lightning beam if it were a target-seeking bolt, though in this trail usage, it follows the socket.
+*   **User.Skeletal Mesh:** Allows the system to reference the character's mesh for attachment or sampling.
 
 ## 5. Decal Impact (Animation Notify)
-### Description
-[Describe the decal impact. What does it look like? How is it triggered?]
+### Visuals
+The Decal Impact effect creates a realistic blood splatter on the ground or walls where the attack connects. It combines a projected decal for the main pool/stain with sprite particles for flying droplets, giving it a visceral and dynamic feel.
 
-[Place holder for Decal Impact GIF]
-*Figure 6: The Decal Impact triggered by the attack.*
+![Blood Splatter Decal Placeholder](PlaceHolder_BloodDecal.gif)
+*Figure 6: The Blood Splatter decal appearing on impact.*
 
 ### Technical Details
-This effect is spawned via an Animation Notify (`ANS_DecalImpact`) in the montage. It performs a line trace to find the surface normal.
+**Niagara System:** `NS_BloodSplat`
 
-| Parameter | Description |
-| :--- | :--- |
-| **User.Scale** | The size of the scorch mark/crack. |
-| **User.SurfaceNormal** | Aligns the decal to the hit surface. |
+*   **Emitters:**
+    *   `Decal_0`: The primary emitter using a **Decal Renderer**. It projects the `M_SplashDecal` material onto the environment.
+    *   `Splat_0`: A secondary emitter using a **Sprite Renderer** to spawn additional blood droplets/mist for added detail.
+*   **Material:** `M_SplashDecal`
+    *   **Domain:** Deferred Decal
+    *   **Textures:** Uses `T_Blood_Erosion` for the shape/color and `T_Blood_Erosion_N` for normal mapping to add depth.
+    *   **Logic:** Includes a `SphereMask` for fading and `CustomRotator` to randomize the splatter orientation.
+
 
 ## 6. SubUV Flipbook Variant
-### Description
-[Describe the flipbook variant. How does it compare to the standard fire?]
+### Visuals
+This uses a pre-rendered texture sheet to animate the fire, creating a stylized or specific look that differs from the procedural noise of the standard fire. It plays through a sequence of frames stored in a single texture.
 
-[Place holder for Flipbook Comparison GIF]
+![Flipbook Comparison Placeholder](PlaceHolder_FlipbookComparison.gif)
 *Figure 7: Side-by-side comparison of Standard Fire vs. Flipbook Fire.*
 
 ### Technical Details
-This variant uses a texture sheet (SubUV) to animate the fire frames instead of procedural noise.
+**Material:** `M_Fire`
 
-## Reflection & Challenges
-### Guiding Questions
-**How did you ensure the effects were performant?**
-[Discuss CPU vs GPU choices, particle counts, etc.]
+*   **Texture:** `FlameSprites` (1024x1024) containing the fire animation frames.
+*   **Grid Layout:** 4x4 (16 frames total), defined by the `Row/CollumnNum` parameter.
+*   **Animation:** Uses the `FlipBook` material function driven by `Time` and `TimeRatio` to cycle through the UV coordinates.
+*   **Motion:** Incorporates `SimpleGrassWind` for World Position Offset (WPO) to add swaying motion to the sprite.
 
-**How did you integrate the effects with gameplay?**
-[Discuss Animation Notifies, Blueprints, etc.]
+| Parameter | Description |
+| :--- | :--- |
+| **TimeRatio** | Controls the playback speed of the flipbook animation. |
+| **Row/CollumnNum** | Sets the grid dimensions (Default: 4). |
+| **Glow** | Multiplier for the emissive intensity. |
+| **WindIntensity/Speed** | Controls the swaying motion applied via WPO. |
 
-**What was the biggest challenge in creating these effects?**
-[Discuss a specific technical hurdle and how you solved it.]
 
-## References
-- [Reference 1]
-- [Reference 2]
-
-## Declared Assets
-- [Asset 1]
-- [Asset 2]
