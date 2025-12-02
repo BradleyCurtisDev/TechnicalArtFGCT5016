@@ -204,4 +204,65 @@ This uses a pre-rendered texture sheet to animate the fire, creating a stylized 
 | **Glow** | Multiplier for the emissive intensity. |
 | **WindIntensity/Speed** | Controls the swaying motion applied via WPO. |
 
+## References
 
+- (475) Electrocuting Lightning Effect in UE5 Niagara - YouTube (s.d.) At: https://www.youtube.com/watch?v=Q6ESKPp8TE0 (Accessed  02/12/2025).
+
+- Animation Notifies in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/animation-notifies-in-unreal-engine (Accessed  02/12/2025).
+
+- How to Attach a Niagara System to a Third Person Character in Unreal Engine 5 (2024) Directed by EZ Unreal. At: https://www.youtube.com/watch?v=GlCuXgI88eM (Accessed  02/12/2025).
+
+- How to read Niagara user parameters from Blueprint? - Asset Creation / FX (2022) At: https://forums.unrealengine.com/t/how-to-read-niagara-user-parameters-from-blueprint/681882 (Accessed  02/12/2025).
+
+- How to Use Anim Notifies in Unreal Engine 5 (2024) Directed by Gorka Games. At: https://www.youtube.com/watch?v=3QsV3t7mFWM (Accessed  02/12/2025).
+
+- Intro To Niagara | Epic Developer Community (s.d.) At: https://dev.epicgames.com/community/learning/tutorials/8B1P/unreal-engine-intro-to-niagara (Accessed  02/12/2025).
+
+- Lightning VFX: Step-by-Step Guide | ICVR Lightfall | Community tutorial (2024) At: https://dev.epicgames.com/community/learning/tutorials/kY3P/unreal-engine-lightning-vfx-step-by-step-guide-icvr-lightfall (Accessed  02/12/2025).
+
+- Quick Start for Niagara Effects in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/quick-start-for-niagara-effects-in-unreal-engine (Accessed  02/12/2025).
+
+- Twinkle Pop VFX - ⚡ Realistic Lightning Attack VFX (Niagara | Optimized | UE5) - Distribution / Product Discussion (2025) At: https://forums.unrealengine.com/t/twinkle-pop-vfx-realistic-lightning-attack-vfx-niagara-optimized-ue5/2650219 (Accessed  02/12/2025).
+
+- UE4 Tutorial: Fire Effect (2018) Directed by underscore. At: https://www.youtube.com/watch?v=B8Gya38KkJY (Accessed  02/12/2025).
+
+- UE5 : Collision-Based Decals with Niagara (Advanced Splash FX) - Part 2 (2025) Directed by Rimaye [ Assets and Tutorials - NIAGARA ]. At: https://www.youtube.com/watch?v=fL6VLH6kEqw (Accessed  02/12/2025).
+
+- UE5 : Create splashes & Decals from Scratch with Niagara (Sprites, Decals) - Part 1 (2025) Directed by Rimaye [ Assets and Tutorials - NIAGARA ]. At: https://www.youtube.com/watch?v=Rnr49e6tjrg (Accessed  02/12/2025).
+
+- UE5 Series: Mastering User Parameters in Niagara VFX! (2024) Directed by SARKAMARI. At: https://www.youtube.com/watch?v=gIqycQcfe5s (Accessed  02/12/2025).
+
+## Declared Assets
+
+- "Stylized_Tree_Pack" from Fab,
+https://www.fab.com/listings/b39d5f78-9494-4a20-b029-24babc8405c5
+
+- "Quarry_Rocks" from Fab,
+https://www.fab.com/listings/6524e193-c690-4191-8b9a-33b62dd846f8
+
+- "Wild_Grass_vlkhcbxia" from Fab,
+https://www.fab.com/listings/50d9a417-73ed-4132-9421-6be3d4f7432e
+
+- "Spring_Lungwort_flowering_plants" from Fab,
+https://www.fab.com/listings/bc57eee9-a709-4553-a1ae-a488afb2a8a4
+
+- `Week4/Animations` from Mixamo,
+https://www.mixamo.com/
+
+- "Rocky Sand" from Fab,
+https://www.fab.com/listings/a913d25a-5488-4293-9049-8c942a4f8332
+
+- "Fresh Windswept Snow" from Fab,
+https://www.fab.com/listings/6ac5c478-8f2c-47cc-88e1-ac36aac010c8
+
+- "Uncut Grass" from Fab,
+https://www.fab.com/listings/1b93f569-aa1d-4f06-8452-03216dfbc1a1
+
+- "Rock Cliff" from Fab,
+https://www.fab.com/listings/22762313-071f-4017-a721-b29c5a2f1a87
+
+- Blood Splatter Textures, 
+https://drive.google.com/file/d/1NqWHqKRGV6WOAyvhrHaXgIxYYKH2bigd/view
+
+- SubUV Flipbook Fire,
+https://bit.ly/2uWwpwZ
