@@ -139,3 +139,5 @@ https://drive.google.com/file/d/1NqWHqKRGV6WOAyvhrHaXgIxYYKH2bigd/view
 
 - SubUV Flipbook Fire,
 https://bit.ly/2uWwpwZ
+
+- Google Gemini 3 Pro, Used to assist with document structuring, grammar checking, and summarizing technical workflows, https://gemini.google.com
